@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Produtos{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-produtos">
+    <div class="admin-container">
+        <h2>Gerenciar Produtos</h2>
+        <a href="{{ url_for('admin_novo_produto') }}" class="btn-novo">+ Novo Produto</a>
+        <table class="produtos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Avaliação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.id }}</td>
+                    <td>{{ produto.nome }}</td>
+                    <td>R$ {{ "%.2f"|format(produto.preco) }}</td>
+                    <td>{{ produto.descricao }}</td>
+                    <td>{{ produto.tipo }}</td>
+                    <td>{{ produto.avaliacao }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_editar_produto', produto_id=produto.id) }}">Editar</a> |
+                        <a href="{{ url_for('admin_remover_produto', produto_id=produto.id) }}" onclick="return confirm('Tem certeza que deseja remover este produto?')">Remover</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

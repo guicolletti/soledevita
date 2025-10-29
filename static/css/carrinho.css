@@ -1,0 +1,68 @@
+.carrinho {
+    padding: 2rem 0;
+}
+
+.carrinho-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.carrinho-total {
+    text-align: right;
+    padding: 2rem 0;
+    border-top: 2px solid #333;
+}
+
+.finalizar-pedido {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.btn-finalizar {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.btn-finalizar:hover {
+    background: #219a52;
+}
+
+.carrinho-vazio, .sem-pedidos {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.pedido-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status.pendente { background: #fff3cd; color: #856404; }
+.status.confirmado { background: #d1ecf1; color: #0c5460; }
+.status.preparando { background: #d4edda; color: #155724; }
+.status.entregue { background: #d1e7dd; color: #0f5132; }

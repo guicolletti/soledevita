@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Cardápio{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cardapio.css') }}">
+{% endblock %}
+
+{% block content %}
+    <section class="menu">
+        <div class="container">
+            <h2>Nosso Cardápio</h2>
+            <div class="menu-grid">
+                {% for produto in produtos %}
+                    <div class="menu-item">
+                        <div class="item-image">
+                            <!-- Imagem do produto -->
+                        </div>
+                        <div class="item-info">
+                            <h3>{{ produto.nome }}</h3>
+                            <p>{{ produto.descricao }}</p>
+                            <span class="price">R$ {{ "%.2f"|format(produto.preco) }}</span>
+                            <span class="nota"> {{ produto.avaliacao }}</span>
+                            {% if session.usuario_id %}
+                                <button class="add-to-cart" data-id="{{ produto.id }}">Adicionar</button>
+                            {% else %}
+                                <p class="login-warning">Faça login para adicionar ao carrinho</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

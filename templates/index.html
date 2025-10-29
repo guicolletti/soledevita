@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h2>Autêntica Cozinha Italiana</h2>
+        <p>Saboreie a verdadeira Itália no conforto da sua casa</p>
+        <a href="{{ url_for('cardapio') }}" class="cta-button">Ver Cardápio</a>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <div class="feature">
+            <h3>🍕 Pratos Autênticos</h3>
+            <p>Receitas tradicionais italianas</p>
+        </div>
+        <div class="feature">
+            <h3>🚚 Delivery Rápido</h3>
+            <p>Entregamos em toda a cidade</p>
+        </div>
+        <div class="feature">
+            <h3>⭐ Alta Qualidade</h3>
+            <p>Ingredientes selecionados</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

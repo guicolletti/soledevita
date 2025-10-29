@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Painel Admin{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-dashboard">
+    <div class="admin-container">
+        <h2>Painel Administrativo</h2>
+        <ul>
+            <li><a href="{{ url_for('admin_produtos') }}">Gerenciar Produtos</a></li>
+            <li><a href="{{ url_for('admin_tipos') }}">Gerenciar Tipos</a></li>
+        </ul>
+    </div>
+</section>
+{% endblock %}

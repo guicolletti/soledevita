@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Tipos{% endblock %}
+
+{% block content %}
+<section class="admin-tipos">
+    <div class="admin-container">
+        <h2>Gerenciar Tipos de Produto</h2>
+        <form method="POST" action="{{ url_for('admin_novo_tipo') }}">
+            <input type="text" name="tipo_nome" placeholder="Novo tipo..." required>
+            <button type="submit">Adicionar Tipo</button>
+        </form>
+
+        <table class="tipos-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tipo in tipos %}
+                <tr>
+                    <td>{{ tipo.id }}</td>
+                    <td>{{ tipo.nome }}</td>
+                    <td>
+                        <a href="{{ url_for('admin_remover_tipo', tipo_id=tipo.id) }}" onclick="return confirm('Remover este tipo?')">Remover</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sole De Vita - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block css %}{% endblock %}
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Sole De Vita</h1>
+            </div>
+            {% if session.usuario_nome %}
+                <p class="welcome">Bem-vindo, {{ session.usuario_nome }}!</p>
+            {% endif %}
+            <ul class="nav-menu">
+                {% if session.usuario_id %}
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('cardapio') }}">Cardápio</a></li>
+                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('cardapio') }}">Cardápio</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2025 Sole De Vita. Todos os direitos reservados.</p>
+        <p>Delivery de Comida Italiana</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Novo Produto{% endblock %}
+
+{% block content %}
+    <section class="admin-form">
+        <div class="admin-container">
+            <h2>Adicionar Novo Produto</h2>
+            <form method="POST">
+                <label>Nome:</label>
+                <input type="text" name="nome" value="{{ produto.nome }}" required>
+
+                <label>Preço:</label>
+                <input type="number" step="0.01" name="preco" value="{{ produto.preco }}" required>
+
+                <label>Descrição:</label>
+                <textarea name="descricao" required>{{ produto.descricao }}</textarea>
+
+                <label>Tipo:</label>
+                <select name="tipo" required>
+                    {% for tipo in tipos %}
+                        <option value="{{ tipo.id }}"
+                                {% if tipo.id == produto.tipo %}selected{% endif %}>{{ tipo.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <label>Avaliação:</label>
+                <input type="number" name="avaliacao" value="{{ produto.avaliacao }}" min="0" max="5">
+
+                <button type="submit">Salvar Alterações</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

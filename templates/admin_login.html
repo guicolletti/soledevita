@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="admin-login">
+    <div class="admin-container">
+        <h2>Área Administrativa</h2>
+        <button onclick="verificarSenha()">Entrar como Admin</button>
+    </div>
+</section>
+
+<script>
+function verificarSenha() {
+    const senha = prompt("Digite a senha de administrador:");
+    if (senha) {
+        fetch("/admin_login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ senha: senha })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.autenticado) {
+                window.location.href = "/admin_dashboard";
+            } else {
+                alert("Senha incorreta.");
+            }
+        });
+    }
+}
+</script>
+{% endblock %}
