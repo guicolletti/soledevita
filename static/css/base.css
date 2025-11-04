@@ -58,7 +58,7 @@ body {
 
 /* Logo (agora com imagem em vez de texto) */
 .logo img {
-    height: 50px; /* Altura da imagem; ajuste conforme necessário */
+    height: 95px; /* Altura da imagem; ajuste conforme necessário */
     width: auto; /* Mantém a proporção */
     /* Adicione mais estilos se precisar, como border-radius para cantos arredondados ou margin para espaçamento */
 }
