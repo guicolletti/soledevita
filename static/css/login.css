@@ -8,7 +8,7 @@ body {
 
 /* Estilos para o cabeçalho (verde claro pastel) - aplique no base.html */
 header {
-    background-color: #d4edda; /* Verde claro pastel suave; alternativa: #e8f5e8 para um tom ainda mais claro */
+    background-color: #c4cc7c; /* Verde claro pastel suave; alternativa: #e8f5e8 para um tom ainda mais claro */
     padding: 10px;
     text-align: center;
     /* Substitua o texto "sole di vita" por uma imagem de logo */
@@ -17,7 +17,7 @@ header {
 
 /* Estilos para o rodapé (mesmo que o cabeçalho) - aplique no base.html */
 footer {
-    background-color: #d4edda; /* Verde claro pastel, igual ao cabeçalho para consistência */
+    background-color: #c4cc7c; /* Verde claro pastel, igual ao cabeçalho para consistência */
     padding: 10px;
     text-align: center;
 }
