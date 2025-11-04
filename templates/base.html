@@ -5,14 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sole De Vita - {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
-    {% block css %}{% endblock %}
+    {% block css %}
+    <!-- Estilos adicionais para o tema -->
+    <style>
+        /* Fundo geral do site (bege claro/off-white) */
+        body {
+            background-color: #fafafa; /* Ajuste para #f5f5dc se quiser mais bege */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Cabeçalho (verde claro pastel) */
+        header {
+            background-color: #d4edda; /* Verde claro pastel */
+        }
+
+        /* Logo no cabeçalho (centralizada e com tamanho ajustado) */
+        .logo img {
+            height: 50px; /* Ajuste o tamanho da logo conforme necessário */
+            display: block;
+            margin: 0 auto; /* Centraliza horizontalmente */
+        }
+
+        /* Rodapé (mesmo que o cabeçalho) */
+        footer {
+            background-color: #d4edda; /* Verde claro pastel */
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+    {% endblock %}
 </head>
 <body>
 <header>
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <h1>Sole De Vita</h1>
+                <!-- Substitua o h1 pela logo da empresa -->
+                <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo da Empresa">
             </div>
             {% if session.usuario_nome %}
                 <p class="welcome">Bem-vindo, {{ session.usuario_nome }}!</p>
