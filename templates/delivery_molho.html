@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Escolher Molho{% endblock %}
+{% block content %}
+<section class="delivery-step">
+  <h2>Escolha seu Molho</h2>
+  <form method="POST">
+    <input type="text" id="search" placeholder="Pesquisar Molho..." onkeyup="filterItems()">
+    <div id="items">
+      {% for molho in molhos %}
+        <div class="item">
+          <label>
+            <input type="radio" name="molho_id" value="{{ molho.id }}" required>
+            <strong>{{ molho.nome }}</strong> - R$ {{ "%.2f"|format(molho.preco) }}
+            <p>{{ molho.desc }}</p>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+    <button type="submit">Próximo: Bebida</button>
+  </form>
+</section>
+<script>
+function filterItems() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let items = document.querySelectorAll("#items .item");
+  items.forEach(i => {
+    i.style.display = i.innerText.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+</script>
+{% endblock %}

@@ -2,86 +2,40 @@
 
 {% block title %}Carrinho{% endblock %}
 
-{% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/carrinho.css') }}">
-{% endblock %}
-
 {% block content %}
 <section class="carrinho">
     <div class="container">
         <h2>Seu Carrinho</h2>
-        
         {% if carrinho %}
-        <div class="carrinho-itens">
+        <table>
+            <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>Subtotal</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
             {% for item in carrinho %}
-            <div class="carrinho-item">
-                <div class="item-info">
-                    <h3>{{ item.nome }}</h3>
-                    <p>Quantidade: {{ item.quantidade }}</p>
-                </div>
-                <div class="item-preco">
-                    <span>R$ {{ "%.2f"|format(item.subtotal) }}</span>
-                    <button class="remover-item" data-id="{{ item.produto_id }}">Remover</button>
-                </div>
-            </div>
+            <tr>
+                <td>{{ item.nome }}</td>
+                <td>R$ {{ "%.2f"|format(item.preco) }}</td>
+                <td>{{ item.quantidade }}</td>
+                <td>R$ {{ "%.2f"|format(item.preco * item.quantidade) }}</td>
+                {% for item in carrinho %}
+                <a href="{{ url_for('remover_carrinho', index=loop.index0) }}">Remover</a>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </div>
-        
-        <div class="carrinho-total">
-            <h3>Total: R$ {{ "%.2f"|format(total) }}</h3>
-        </div>
-        
-        <div class="finalizar-pedido">
-            <h3>Finalizar Pedido</h3>
-            <form id="form-pedido">
-                <div class="form-group">
-                    <label for="endereco">Endereço de Entrega:</label>
-                    <input type="text" id="endereco" name="endereco" required>
-                </div>
-                <div class="form-group">
-                    <label for="observacoes">Observações:</label>
-                    <textarea id="observacoes" name="observacoes"></textarea>
-                </div>
-                <button type="submit" class="btn-finalizar">Finalizar Pedido</button>
-            </form>
-        </div>
-        
+            </tbody>
+        </table>
+        <h3>Total: R$ {{ "%.2f"|format(total) }}</h3>
+        <a href="{{ url_for('finalizar_pedido') }}" class="btn-finalizar">Finalizar Pedido</a>
         {% else %}
-        <div class="carrinho-vazio">
-            <p>Seu carrinho está vazio</p>
-            <a href="{{ url_for('cardapio') }}" class="cta-button">Ver Cardápio</a>
-        </div>
+        <p>Seu carrinho está vazio.</p>
         {% endif %}
     </div>
 </section>
-{% endblock %}
-
-{% block scripts %}
-<script>
-document.getElementById('form-pedido').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = {
-        endereco: document.getElementById('endereco').value,
-        observacoes: document.getElementById('observacoes').value
-    };
-    
-    fetch('/finalizar-pedido', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.message) {
-            alert('Pedido realizado com sucesso! Nº: ' + data.pedido_id);
-            window.location.href = '/meus-pedidos';
-        } else {
-            alert('Erro: ' + data.error);
-        }
-    });
-});
-</script>
 {% endblock %}

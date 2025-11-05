@@ -6,30 +6,25 @@
     <title>Sole De Vita - {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     {% block css %}
-    <!-- Estilos adicionais para o tema -->
     <style>
-        /* Fundo geral do site (bege claro/off-white) */
         body {
             background-color: #fafafa; /* Ajuste para #f5f5dc se quiser mais bege */
             margin: 0;
             padding: 0;
         }
 
-        /* Cabeçalho (verde claro pastel) */
         header {
-            background-color: #d4edda; /* Verde claro pastel */
+            background-color: #d4edda;
         }
 
-        /* Logo no cabeçalho (centralizada e com tamanho ajustado) */
         .logo img {
-            height: 50px; /* Ajuste o tamanho da logo conforme necessário */
+            height: 50px;
             display: block;
-            margin: 0 auto; /* Centraliza horizontalmente */
+            margin: 0 auto;
         }
 
-        /* Rodapé (mesmo que o cabeçalho) */
         footer {
-            background-color: #d4edda; /* Verde claro pastel */
+            background-color: #d4edda;
             padding: 10px;
             text-align: center;
         }
@@ -41,21 +36,22 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <!-- Substitua o h1 pela logo da empresa -->
                 <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo da Empresa">
             </div>
             {% if session.usuario_nome %}
-                <p class="welcome">Bem-vindo, {{ session.usuario_nome }}!</p>
+            <p class="welcome">Bem-vindo, {{ session.usuario_nome }}!</p>
             {% endif %}
             <ul class="nav-menu">
                 {% if session.usuario_id %}
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="{{ url_for('cardapio') }}">Cardápio</a></li>
-                    <li><a href="{{ url_for('logout') }}">Sair</a></li>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('cardapio') }}">Cardápio</a></li>
+                <li><a href="{{ url_for('delivery') }}">Delivery</a></li>
+                <li><a href="{{ url_for('carrinho') }}">Carrinho</a></li>
+                <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
                 {% else %}
-                    <li><a href="{{ url_for('cardapio') }}">Cardápio</a></li>
-                    <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('cadastro') }}">Cadastro</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -63,13 +59,13 @@
 </header>
 <main>
     {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="flash-container">
-                {% for message in messages %}
-                    <div class="flash-message">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
+    {% if messages %}
+    <div class="flash-container">
+        {% for message in messages %}
+        <div class="flash-message">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
     {% endwith %}
 
     {% block content %}{% endblock %}

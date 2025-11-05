@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Gerenciar Pedidos{% endblock %}
+{% block content %}
+<section class="admin-pedidos">
+  <div class="admin-container">
+    <h2>Gerenciar Pedidos</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Cliente</th>
+          <th>Data</th>
+          <th>Status</th>
+          <th>Total</th>
+          <th>Endereço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pedido in pedidos %}
+        <tr>
+          <td>#{{ pedido.id }}</td>
+          <td>{{ pedido.cliente }}</td>
+          <td>{{ pedido.data.strftime('%d/%m/%Y %H:%M') if pedido.data else '-' }}</td>
+          <td>{{ pedido.status }}</td>
+          <td>R$ {{ "%.2f"|format(pedido.total) }}</td>
+          <td>{{ pedido.endereco }}</td>
+          <td>
+            {% if pedido.status != 'Finalizado' %}
+              <a href="{{ url_for('admin_finalizar_pedido', pedido_id=pedido.id) }}"
+                 onclick="return confirm('Marcar este pedido como Finalizado?')">
+                 Finalizar
+              </a>
+            {% else %}
+              ✔️ Finalizado
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}

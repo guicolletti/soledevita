@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Confirmar Pedido{% endblock %}
+{% block content %}
+<section class="delivery-confirmar">
+  <h2>Confirme seu Prato</h2>
+  <ul>
+    {% for item in itens %}
+      <li>{{ item[1] }} - R$ {{ "%.2f"|format(item[2]) }}</li>
+    {% endfor %}
+  </ul>
+  <h3>Total: R$ {{ "%.2f"|format(total) }}</h3>
+  <form method="POST">
+    <button type="submit">Adicionar ao Carrinho</button>
+  </form>
+</section>
+{% endblock %}

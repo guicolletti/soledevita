@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Delivery{% endblock %}
+
+{% block content %}
+<section class="delivery-intro">
+  <div class="delivery-container">
+    <h2>Monte seu prato do Delivery 🍝</h2>
+    <p>Escolha sua massa favorita, combine com um molho delicioso e finalize com uma bebida refrescante.</p>
+
+    <div class="delivery-steps">
+      <div class="step">
+        <h3>1. Massa</h3>
+        <p>Escolha entre nossas massas artesanais.</p>
+      </div>
+      <div class="step">
+        <h3>2. Molho</h3>
+        <p>Selecione o molho que mais combina com sua massa.</p>
+      </div>
+      <div class="step">
+        <h3>3. Bebida</h3>
+        <p>Finalize com uma bebida gelada.</p>
+      </div>
+    </div>
+
+    <a href="{{ url_for('escolher_massa') }}" class="btn-delivery">Começar Agora</a>
+  </div>
+</section>
+{% endblock %}

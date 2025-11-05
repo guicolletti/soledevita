@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Escolher Bebida{% endblock %}
+{% block content %}
+<section class="delivery-step">
+  <h2>Escolha sua Bebida</h2>
+  <form method="POST">
+    <input type="text" id="search" placeholder="Pesquisar bebida..." onkeyup="filterItems()">
+    <div id="items">
+      {% for bebida in bebidas %}
+        <div class="item">
+          <label>
+            <input type="radio" name="bebida_id" value="{{ bebida.id }}" required>
+            <strong>{{ bebida.nome }}</strong> - R$ {{ "%.2f"|format(bebida.preco) }}
+            <p>{{ bebida.desc }}</p>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+    <button type="submit">Próximo: Finalizar</button>
+  </form>
+</section>
+<script>
+function filterItems() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let items = document.querySelectorAll("#items .item");
+  items.forEach(i => {
+    i.style.display = i.innerText.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+</script>
+{% endblock %}

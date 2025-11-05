@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Meu Perfil{% endblock %}
+{% block content %}
+<section class="perfil">
+  <div class="container">
+    <h2>Meu Perfil</h2>
+    <form method="POST">
+      <label>Nome:</label>
+      <input type="text" name="nome" value="{{ usuario[0] }}" required>
+
+      <label>Email:</label>
+      <input type="email" name="email" value="{{ usuario[1] }}" required>
+
+      <label>Endereço:</label>
+      <input type="text" name="endereco" value="{{ usuario[2] }}" required>
+
+      <label>Senha (deixe em branco para não alterar):</label>
+      <input type="password" name="senha">
+
+      <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <hr>
+    <a href="{{ url_for('perfil_pedidos') }}">Ver meus pedidos</a>
+  </div>
+</section>
+{% endblock %}

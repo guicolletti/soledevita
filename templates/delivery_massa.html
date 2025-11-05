@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Escolher Massa{% endblock %}
+{% block content %}
+<section class="delivery-step">
+  <h2>Escolha sua Massa</h2>
+  <form method="POST">
+    <input type="text" id="search" placeholder="Pesquisar massa..." onkeyup="filterItems()">
+    <div id="items">
+      {% for massa in massas %}
+        <div class="item">
+          <label>
+            <input type="radio" name="massa_id" value="{{ massa.id }}" required>
+            <strong>{{ massa.nome }}</strong> - R$ {{ "%.2f"|format(massa.preco) }}
+            <p>{{ massa.desc }}</p>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+    <button type="submit">Próximo: Molho</button>
+  </form>
+</section>
+<script>
+function filterItems() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let items = document.querySelectorAll("#items .item");
+  items.forEach(i => {
+    i.style.display = i.innerText.toLowerCase().includes(input) ? "" : "none";
+  });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Editar Tipo{% endblock %}
+{% block content %}
+<section class="admin-form">
+  <div class="admin-container">
+    <h2>Editar Tipo</h2>
+    <form method="POST">
+      <label>Nome do Tipo:</label>
+      <input type="text" name="tipo_nome" value="{{ tipo.nome }}" required>
+      <button type="submit">Salvar Alterações</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

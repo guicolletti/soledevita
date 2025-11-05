@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Meus Pedidos{% endblock %}
+{% block content %}
+<section class="meus-pedidos">
+  <div class="container">
+    <h2>Meus Pedidos</h2>
+    {% if pedidos %}
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Endereço de Entrega</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for pedido in pedidos %}
+          <tr>
+            <td>#{{ pedido.id }}</td>
+            <td>{{ pedido.data.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ pedido.status }}</td>
+            <td>R$ {{ "%.2f"|format(pedido.total) }}</td>
+            <td>{{ pedido.endereco }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Você ainda não fez nenhum pedido.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

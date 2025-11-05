@@ -69,3 +69,21 @@
 .add-to-cart:hover {
     background: #219a52;
 }
+
+.add-to-cart {
+    display: inline-block;
+    text-align: center;
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+    text-decoration: none; /* remove sublinhado */
+}
+
+.add-to-cart:hover {
+    background: #219a52;
+}

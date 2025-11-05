@@ -10,7 +10,6 @@
             <input type="text" name="tipo_nome" placeholder="Novo tipo..." required>
             <button type="submit">Adicionar Tipo</button>
         </form>
-
         <table class="tipos-table">
             <thead>
                 <tr>
@@ -26,6 +25,7 @@
                     <td>{{ tipo.nome }}</td>
                     <td>
                         <a href="{{ url_for('admin_remover_tipo', tipo_id=tipo.id) }}" onclick="return confirm('Remover este tipo?')">Remover</a>
+                        <a href="{{ url_for('admin_editar_tipo', tipo_id=tipo.id) }}">Editar</a>
                     </td>
                 </tr>
                 {% endfor %}

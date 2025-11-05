@@ -6,7 +6,7 @@
 <section class="admin-form">
     <div class="admin-container">
         <h2>Adicionar Novo Produto</h2>
-        <form method="POST">
+        <form method="POST" action="{{ url_for('admin_novo_produto') }}">
             <label>Nome:</label>
             <input type="text" name="nome" required>
 
