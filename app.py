@@ -32,7 +32,7 @@ def admin_required(f):
 
 @app.route('/')
 def index():
-    return redirect(url_for('cadastro'))
+    return render_template('index.html')
 
 @app.route('/admin_login', methods=['GET', 'POST'])
 def admin_login():
@@ -545,6 +545,7 @@ def remover_carrinho(index):
         carrinho.pop(index)
     session['carrinho'] = carrinho
     flash('Item removido do carrinho.')
+
     return redirect(url_for('carrinho'))
 
 @app.route('/finalizar-pedido')
@@ -589,6 +590,8 @@ def finalizar_pedido():
 
     session['carrinho'] = []
     flash("Pedido finalizado com sucesso! Acesse seu perfil para ver os pedidos")
+
+    return redirect(url_for('perfil_pedidos'))
 
 @app.route('/perfil', methods=['GET', 'POST'])
 @login_required
