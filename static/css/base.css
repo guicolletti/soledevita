@@ -1,21 +1,26 @@
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Fundo geral do site (bege claro/off-white) */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
+    background-color: #fafafa; /* Fundo bege claro para consistência com o tema; alternativa: #f5f5dc para um tom mais amarelado */
 }
 
+/* Container para mensagens flash */
 .flash-container {
     margin: 1rem auto;
     max-width: 600px;
     padding: 0 1rem;
 }
 
+/* Mensagem flash (verde para sucesso) */
 .flash-message {
     background-color: #2ecc71;
     color: white;
@@ -27,19 +32,21 @@ body {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Container principal */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Navbar */
+/* Navbar (verde claro pastel) */
 .navbar {
-    background: #2c3e50;
-    color: white;
+    background: #c4cc7c; /* Verde claro pastel suave; alternativa: #e8f5e8 para um tom ainda mais claro */
+    color: #333; /* Texto escuro para contraste com o fundo pastel */
     padding: 1rem 0;
 }
 
+/* Container da navbar */
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -49,10 +56,14 @@ body {
     align-items: center;
 }
 
-.logo h1 {
-    color: #e74c3c;
+/* Logo (agora com imagem em vez de texto) */
+.logo img {
+    height: 95px; /* Altura da imagem; ajuste conforme necessário */
+    width: auto; /* Mantém a proporção */
+    /* Adicione mais estilos se precisar, como border-radius para cantos arredondados ou margin para espaçamento */
 }
 
+/* Menu de navegação */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -60,19 +71,19 @@ body {
 }
 
 .nav-menu a {
-    color: white;
+    color: #5a050d; /* Texto escuro para visibilidade no fundo pastel */
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .nav-menu a:hover {
-    color: #e74c3c;
+    color: #28a745; /* Verde escuro no hover para destaque */
 }
 
-/* Footer */
+/* Footer (mesmo que a navbar para consistência) */
 footer {
-    background: #34495e;
-    color: white;
+    background: #c4cc7c; /* Verde claro pastel, igual à navbar */
+    color: #5a050d; /* Texto escuro para contraste */
     text-align: center;
     padding: 2rem 0;
     margin-top: auto;
